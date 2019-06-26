@@ -1,6 +1,6 @@
 'use strict'
 
-// const store = require('../store')
+const store = require('../store')
 
 const successMessage = message => {
   $('#message').text(message)
@@ -28,11 +28,24 @@ const signUpFailure = () => {
   failureMessage('Sign Up failure :(')
 }
 
+const signInSuccessful = responseData => {
+  console.log('responseData is ', responseData)
+  successMessage('You Signed In Successfully!')
+
+  // keep track of user so we have token for api
+  // we use store so we can access the token in any file.
+  store.user = responseData.user
+}
+
+const signInFailure = () => {
+  failureMessage('Sign In Failed, Wrong Email Or Password :(')
+}
+
 module.exports = {
   signUpSuccessful,
-  signUpFailure
-  // signInSuccessful,
-  // signInFailure,
+  signUpFailure,
+  signInSuccessful,
+  signInFailure
   // changePwSuccess,
   // changePwFailure,
   // signOutSuccess,
