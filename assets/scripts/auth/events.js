@@ -24,10 +24,28 @@ const onSignIn = event => {
     .catch(ui.signInFailure)
 }
 
+const onChangePw = event => {
+  event.preventDefault()
+
+  const form = event.target
+  const formData = getFormFields(form)
+  api.changePw(formData)
+    .then(ui.changePwSuccess)
+    .catch(ui.changePwFailure)
+}
+
+const onSignOut = event => {
+  event.preventDefault()
+  // no form data required for DELETE events
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
 module.exports = {
   onSignUp,
-  onSignIn
-//  onChangePw,
-//  onSignOut
+  onSignIn,
+  onChangePw,
+  onSignOut
 
 }

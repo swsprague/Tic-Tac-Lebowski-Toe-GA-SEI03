@@ -41,13 +41,29 @@ const signInFailure = () => {
   failureMessage('Sign In Failed, Wrong Email Or Password :(')
 }
 
+const changePwSuccess = () => {
+  successMessage('Changed Password Successfully!')
+}
+
+const changePwFailure = () => {
+  failureMessage('Password Change failure :(')
+}
+
+const signOutSuccess = () => {
+  successMessage('Signed Out Successfully!')
+}
+
+const signOutFailure = () => {
+  failureMessage('Sign Out Failure')
+}
+
 module.exports = {
   signUpSuccessful,
   signUpFailure,
   signInSuccessful,
-  signInFailure
-  // changePwSuccess,
-  // changePwFailure,
-  // signOutSuccess,
-  // signOutFailure
+  signInFailure,
+  changePwSuccess,
+  changePwFailure,
+  signOutSuccess,
+  signOutFailure
 }
