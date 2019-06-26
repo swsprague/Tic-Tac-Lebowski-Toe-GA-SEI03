@@ -1,5 +1,8 @@
+Wireframe:
 
+![Wireframe][logo]
 
+[logo]: https://i.imgur.com/r24VPpO.png "Tic-Tac-Toe Wireframe"
 
 How to represent the board in JS:
 
