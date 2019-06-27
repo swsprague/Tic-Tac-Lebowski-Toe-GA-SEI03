@@ -20,9 +20,9 @@ const failureMessage = message => {
   $('form').trigger('reset')
 }
 
-const newGameStart = data => {
+const newGameStart = responseData => {
   console.log(store)
-  store.game = data.game
+  store.game = responseData.game
   successMessage('NEW GAME: START')
 }
 
@@ -31,10 +31,11 @@ const newGameFail = () => {
 }
 
 // const newMove = () => {
+//
 //   $('.div').text('x')
 //   $('#message').addClass('success')
 //   $('#message').removeClass('failure')
-
+// }
 // clear forms
 // $('form').trigger('reset')
 // }
@@ -42,5 +43,5 @@ const newGameFail = () => {
 module.exports = {
   newGameStart,
   newGameFail
-//  newMove
+// newMove
 }
