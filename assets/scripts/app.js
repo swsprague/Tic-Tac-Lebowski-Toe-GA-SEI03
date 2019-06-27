@@ -12,10 +12,11 @@ $(() => {
   // your JS code goes here
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
+  $('#quick').on('click', authEvents.onQuickSignIn)
   $('#change-pw').on('submit', authEvents.onChangePw)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
-  $('.sq').on('click', function (event) {
-    $(event.target).text('x')
-  })
+  $('.sq').on('click', gameEvents.moveCheck)
+
+  // $(event.target).text('x')
 })

@@ -29,7 +29,6 @@ const signUpFailure = () => {
 }
 
 const signInSuccessful = responseData => {
-  console.log('responseData is ', responseData)
   successMessage('You Signed In Successfully!')
 
   // keep track of user so we have token for api
