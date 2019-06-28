@@ -2,8 +2,15 @@
 
 const store = require('../store')
 
+const moveStatus = message => {
+  $('#is-taken').text(message)
+
+  // clear forms
+  $('form').trigger('reset')
+}
+
 const successMessage = message => {
-  $('#game-status').text(message)
+  $('#game-status').text(message).fadeOut(3000).addClass('hide')
   $('#game-status').addClass('success')
   $('#game-status').removeClass('failure')
 
@@ -24,6 +31,7 @@ const newGameStart = responseData => {
   store.game = responseData.game
   console.log('store is ', store)
   successMessage('NEW GAME: START')
+  $('#current-player').text(`Your Move Player X`)
 }
 
 const newGameFail = () => {
@@ -33,9 +41,13 @@ const newGameFail = () => {
 const updateGameSuccess = responseData => {
   // store.game = responseData.game
   console.log('store is now: ', store)
-  successMessage('Nice Move')
+  // moveStatus(`Nice Move`).addClass('show')
   console.log(store.game)
 }
+
+// const moveDisplay = () => {
+//   moveStatus(`Your Turn Player !`)
+// }
 
 const updateGameFail = responseData => {
   failureMessage('No Can Do Compadre')
@@ -55,6 +67,7 @@ module.exports = {
   newGameStart,
   newGameFail,
   updateGameSuccess,
-  updateGameFail
+  updateGameFail,
+  moveStatus
 // newMove
 }

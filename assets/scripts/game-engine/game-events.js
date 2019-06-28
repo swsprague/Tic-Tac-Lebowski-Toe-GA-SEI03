@@ -11,6 +11,8 @@ const onNewGame = data => {
   console.log('data is: ', data)
   event.preventDefault()
 
+  //  $('#current-player').text(`Your Move ${gameFunctions['currentPlayer']}`)
+
   api.newGame()
     .then(ui.newGameStart)
     .catch(ui.newGameFail)
@@ -32,9 +34,11 @@ const onUpdateGame = event => {
   //  move.game.cell['value'] = gameFunctions.currentPlayer
   if (gameFunctions.moveCheck(move) !== false) {
     ui.updateGameSuccess()
+    $('#is-taken').text('Nice Move!')
   } else {
-    $('#game-status').text('This Square Is Taken!')
+    $('#is-taken').text('This Square Is Taken!')
   }
+  //  $('#current-player').text(`Your Move ${move['value']}`)
   // move.game.over = gameFunctions.isOver()
 
   api.updateGame(move)

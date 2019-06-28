@@ -16,7 +16,8 @@ $(() => {
   $('#change-pw').on('submit', authEvents.onChangePw)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
+  $('#new-game').on('click', gameEvents.currentPlayer)
   $('.sq').on('click', gameEvents.onUpdateGame)
-
+  $('.sq')
   // $(event.target).text('x')
 })

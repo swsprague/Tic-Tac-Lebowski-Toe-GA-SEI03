@@ -1,7 +1,5 @@
 'use strict'
 
-const api = require('./game-api')
-const ui = require('./game-ui')
 const store = require('../store')
 
 console.log('store rn: ', store)
@@ -9,12 +7,15 @@ console.log('store rn: ', store)
 let currentPlayer = 'X'
 
 const changePlayer = function () {
+  $('#current-player').text(`Your Move Player ${currentPlayer}`)
   if (currentPlayer === 'X') {
     $(event.target).text('X')
     currentPlayer = 'O'
+    $('#current-player').text(`Your Move Player ${currentPlayer}`)
   } else {
     $(event.target).text('O')
     currentPlayer = 'X'
+    $('#current-player').text(`Your Move Player ${currentPlayer}`)
   }
 }
 
