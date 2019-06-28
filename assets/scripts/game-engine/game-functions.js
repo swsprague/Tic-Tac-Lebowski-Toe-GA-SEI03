@@ -1,8 +1,10 @@
 'use strict'
 
-// const store = require('../store')
+const api = require('./game-api')
+const ui = require('./game-ui')
+const store = require('../store')
 
-// const gameBoard = store.game.cells
+console.log('store rn: ', store)
 
 let currentPlayer = 'X'
 
@@ -13,6 +15,19 @@ const changePlayer = function () {
   } else {
     $(event.target).text('O')
     currentPlayer = 'X'
+  }
+}
+
+const moveCheck = function (move) {
+  const gameBoard = store.game
+  console.log('square is: ', event.target.id)
+  console.log('gameBoard is ', gameBoard)
+  console.log('square is: ', event.target.id)
+  if (gameBoard.cells[event.target.id] === '') {
+    gameBoard.cells.splice(event.target.id, 1, currentPlayer)
+    changePlayer()
+  } else if (gameBoard.cells[event.target.id] !== '') {
+    $('#game-status').text('This Square is Taken!')
   }
 }
 
@@ -64,5 +79,7 @@ const changePlayer = function () {
 
 module.exports = {
   // winningState,
-  changePlayer
+  changePlayer,
+  moveCheck
+
 }

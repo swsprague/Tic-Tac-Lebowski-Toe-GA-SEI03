@@ -21,13 +21,24 @@ const failureMessage = message => {
 }
 
 const newGameStart = responseData => {
-  console.log(store)
   store.game = responseData.game
+  console.log('store is ', store)
   successMessage('NEW GAME: START')
 }
 
 const newGameFail = () => {
   failureMessage('UNABLE TO START NEW GAME')
+}
+
+const updateGameSuccess = responseData => {
+  // store.game = responseData.game
+  console.log('store is now: ', store)
+  successMessage('Nice Move')
+  console.log(store.game)
+}
+
+const updateGameFail = responseData => {
+  failureMessage('No Can Do Compadre')
 }
 
 // const newMove = () => {
@@ -42,6 +53,8 @@ const newGameFail = () => {
 
 module.exports = {
   newGameStart,
-  newGameFail
+  newGameFail,
+  updateGameSuccess,
+  updateGameFail
 // newMove
 }

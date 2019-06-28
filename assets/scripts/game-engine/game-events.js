@@ -5,21 +5,7 @@
 const api = require('./game-api')
 const ui = require('./game-ui')
 const gameFunctions = require('./game-functions')
-
-const gameBoard = ['', '', '', '', '', '', '', '', '']
-
-// store.game.cells = gameBoard
-
-const moveCheck = function (event) {
-  if (gameBoard[event.target.id] === '') {
-    gameBoard.splice(event.target, 1, gameFunctions.currentPlayer)
-    $('#game-status').text('Nice Move')
-    gameFunctions.changePlayer()
-  }
-  if (gameBoard[event.target.id] !== '') {
-    $('#game-status').text('This Square is Taken!')
-  }
-}
+const store = require('../store')
 
 const onNewGame = data => {
   console.log('data is: ', data)
@@ -31,8 +17,25 @@ const onNewGame = data => {
 }
 
 const onUpdateGame = event => {
+  console.log('store is currently: ', store)
   event.preventDefault()
-  const move = store.game
+  const move = {
+    game: {
+      cell: {
+        index: event.target.id,
+        value: gameFunctions.currentPlayer
+      },
+      over: 'false'
+    }
+  }
+  //  move.game.cell['index'] = event.target.id
+  //  move.game.cell['value'] = gameFunctions.currentPlayer
+  gameFunctions.moveCheck(move)
+  // move.game.over = gameFunctions.isOver()
+
+  api.updateGame(move)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFail)
 }
 
 // const nextMove = event => {
@@ -59,6 +62,6 @@ const onUpdateGame = event => {
 
 module.exports = {
   onNewGame,
-  moveCheck
+  onUpdateGame
 
 }
