@@ -30,12 +30,16 @@ const onUpdateGame = event => {
   }
   //  move.game.cell['index'] = event.target.id
   //  move.game.cell['value'] = gameFunctions.currentPlayer
-  gameFunctions.moveCheck(move)
+  if (gameFunctions.moveCheck(move) !== false) {
+    ui.updateGameSuccess()
+  } else {
+    $('#game-status').text('This Square Is Taken!')
+  }
   // move.game.over = gameFunctions.isOver()
 
   api.updateGame(move)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFail)
+//    .then(ui.updateGameSuccess)
+//    .catch(ui.updateGameFail)
 }
 
 // const nextMove = event => {

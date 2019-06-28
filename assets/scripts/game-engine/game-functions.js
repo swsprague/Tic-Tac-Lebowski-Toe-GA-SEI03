@@ -27,7 +27,7 @@ const moveCheck = function (move) {
     gameBoard.cells.splice(event.target.id, 1, currentPlayer)
     changePlayer()
   } else if (gameBoard.cells[event.target.id] !== '') {
-    $('#game-status').text('This Square is Taken!')
+    return false
   }
 }
 
