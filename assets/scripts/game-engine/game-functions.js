@@ -5,8 +5,22 @@ const store = require('../store')
 console.log('store rn: ', store)
 
 let currentPlayer = 'X'
+// let clicks = 0
 
 const changePlayer = function () {
+//   if (clicks === 0) {
+//     currentPlayer = 'X'
+//     $('#current-player').text(`Your Move Player ${currentPlayer}`)
+//     $(event.target).text('X')
+//     clicks += 1
+//   } else if (clicks % 2 !== 0) {
+//     currentPlayer = 'O'
+//     $('#current-player').text(`Your Move Player ${currentPlayer}`)
+//     $(event.target).text('O')
+//     clicks += 1
+//   }
+// }
+
   $('#current-player').text(`Your Move Player ${currentPlayer}`)
   if (currentPlayer === 'X') {
     $(event.target).text('X')
@@ -28,6 +42,56 @@ const moveCheck = function (move) {
     gameBoard.cells.splice(event.target.id, 1, currentPlayer)
     changePlayer()
   } else if (gameBoard.cells[event.target.id] !== '') {
+    return false
+  }
+}
+
+const winningState = function (game) {
+  const gameBoard = store.game
+
+  console.log('gameBoard at winState is: ', gameBoard)
+
+  const sqZero = gameBoard.cells[0]
+  const sqThree = gameBoard.cells[3]
+  const sqSix = gameBoard.cells[6]
+
+  const sqOne = gameBoard.cells[1]
+  const sqFour = gameBoard.cells[4]
+  const sqSeven = gameBoard.cells[7]
+
+  const sqTwo = gameBoard.cells[2]
+  const sqFive = gameBoard.cells[5]
+  const sqEight = gameBoard.cells[8]
+
+  console.log('sqZero is ', sqZero)
+
+  if ((sqZero === sqThree) && (sqThree === sqSix)) {
+    return sqSix
+  } else if ((sqOne === sqFour) && (sqFour === sqSeven)) {
+    return sqSeven
+  } else if ((sqTwo === sqFive) && (sqFive === sqEight)) {
+    return sqEight
+  } else if ((sqZero === sqOne) && (sqOne === sqTwo)) {
+    return sqTwo
+  } else if ((sqThree === sqFour) && (sqFour === sqFive)) {
+    return sqFive
+  } else if ((sqSix === sqSeven) && (sqSeven === sqEight)) {
+    return sqEight
+  } else if ((sqZero === sqFour) && (sqFour === sqEight)) {
+    return sqEight
+  } else if ((sqTwo === sqFour) && (sqFour === sqSix)) {
+    return sqSix
+  } else {
+    return false
+  }
+}
+
+const checkWinner = function (move) {
+  const gameBoard = store.game
+  console.log('gameBoard checkwin is: ', gameBoard)
+  if (winningState(gameBoard)) {
+    return true
+  } else {
     return false
   }
 }
@@ -81,6 +145,9 @@ const moveCheck = function (move) {
 module.exports = {
   // winningState,
   changePlayer,
-  moveCheck
+  moveCheck,
+  winningState,
+  checkWinner,
+  currentPlayer
 
 }

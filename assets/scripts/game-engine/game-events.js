@@ -7,6 +7,9 @@ const ui = require('./game-ui')
 const gameFunctions = require('./game-functions')
 const store = require('../store')
 
+const currentPlayer = gameFunctions.currentPlayer
+console.log('currentPlayer is ', gameFunctions.currentPlayer)
+
 const onNewGame = data => {
   console.log('data is: ', data)
   event.preventDefault()
@@ -19,7 +22,9 @@ const onNewGame = data => {
 }
 
 const onUpdateGame = event => {
+  console.log('Update currentPlayer is ', currentPlayer)
   console.log('store is currently: ', store)
+  // const gameBoard = store.game.cells
   event.preventDefault()
   const move = {
     game: {
@@ -35,12 +40,16 @@ const onUpdateGame = event => {
   if (gameFunctions.moveCheck(move) !== false) {
     ui.updateGameSuccess()
     $('#is-taken').text('Nice Move!')
-  } else {
+  } else if (gameFunctions.moveCheck(move) === false) {
     $('#is-taken').text('This Square Is Taken!')
   }
+
+  if (gameFunctions.checkWinner(move)) {
+    $('#is-taken').text(`Player ${gameFunctions.currentPlayer} Wins!`)
+  }
+
   //  $('#current-player').text(`Your Move ${move['value']}`)
   // move.game.over = gameFunctions.isOver()
-
   api.updateGame(move)
 //    .then(ui.updateGameSuccess)
 //    .catch(ui.updateGameFail)
