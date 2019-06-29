@@ -45,7 +45,7 @@ const onUpdateGame = event => {
   }
 
   if (gameFunctions.checkWinner(move)) {
-    $('#is-taken').text(`Player ${gameFunctions.currentPlayer} Wins!`)
+    $('#is-taken').text(`Player ${gameFunctions.winningState(move)} Wins!`)
   }
 
   //  $('#current-player').text(`Your Move ${move['value']}`)
