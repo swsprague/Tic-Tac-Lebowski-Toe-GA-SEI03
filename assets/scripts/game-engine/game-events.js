@@ -1,11 +1,10 @@
 'use strict'
 
-// const getFormFields = require('../../../lib/get-form-fields')
-
 const api = require('./game-api')
 const ui = require('./game-ui')
 const gameFunctions = require('./game-functions')
 const store = require('../store')
+const getFormFields = require('./../../../lib/get-form-fields')
 
 const onNewGame = data => {
   console.log('data is: ', data)
@@ -86,19 +85,32 @@ const onUpdateGame = event => {
 
 const onCheckGames = data => {
   const gameUser = store.user
+  //  const games = store.games
   event.preventDefault()
-  $('#x-wins').text(`X Wins: ${gameUser.xWins}`)
-  $('#o-wins').text(`O Wins: ${gameUser.oWins}`)
-  $('#ties').text(`Ties: ${gameUser.ties}`)
+  $('#x-wins').text(`Current X Wins: ${gameUser.xWins}`)
+  $('#o-wins').text(`Current O Wins: ${gameUser.oWins}`)
+  $('#ties').text(`Current Ties: ${gameUser.ties}`)
 
   api.indexGames()
     .then(ui.indexGamesSuccess)
     .catch(ui.indexGamesFail)
 }
 
+const onShowGame = event => {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+  console.log('This is the form data ', formData.game)
+
+  api.showGame(formData.game.id)
+    .then(ui.showGameSuccess)
+    .catch(ui.showGameFail)
+}
+
 module.exports = {
   onNewGame,
   onUpdateGame,
-  onCheckGames
+  onCheckGames,
+  onShowGame
 
 }

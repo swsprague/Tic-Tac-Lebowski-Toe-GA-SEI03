@@ -18,6 +18,5 @@ $(() => {
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#new-game').on('click', gameEvents.currentPlayer)
   $('#show-stats').on('click', gameEvents.onCheckGames)
-
-  // $(event.target).text('x')
+  $('#show-game').on('submit', gameEvents.onShowGame)
 })

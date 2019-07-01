@@ -4,7 +4,6 @@ const store = require('../store')
 
 console.log('store rn: ', store)
 
-
 let currentPlayer = 'X'
 let turnCount = 0
 // let clicks = 0

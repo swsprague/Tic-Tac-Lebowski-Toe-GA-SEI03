@@ -26,9 +26,18 @@ const updateGame = (data) => {
 }
 
 const indexGames = function () {
-  // make GET request to /books
   return $.ajax({
     url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const showGame = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -39,5 +48,6 @@ const indexGames = function () {
 module.exports = {
   newGame,
   updateGame,
-  indexGames
+  indexGames,
+  showGame
 }

@@ -65,23 +65,48 @@ const updateGameFail = responseData => {
 // }
 
 const indexGamesSuccess = responseData => {
+  store.games = responseData.games
   console.log('index games success ', responseData)
   $('#games-played').html('')
 
-  responseData.games.forEach(function (game) {
+  store.games.forEach(function (game) {
     const gamesHtml = (`
       <h4>Game ID: ${game.id}</h4>
       <p>Completed: ${game.over}</p>
-      <p>Result: ${game.winner}</p>
+
       <br>
     `)
+    // <p>Result: ${game.winner}</p>
     $('#games-played').append(gamesHtml)
   })
+
+  console.log('store games array length: ', store.games.length)
+
+  $('#total-games').text(`Total Games Played: ${store.games.length}`)
 }
 
 const indexGamesFail = function (error) {
   console.log('Index Games Failed ', error)
   failureMessage('Cannot Load Games')
+}
+
+const showGameSuccess = responseData => {
+  console.log('show game success ', responseData)
+  $('#games-played').html(`
+      <p>Game ID: ${responseData.game.id}<p>
+      <p>Completed: ${responseData.game.over}</p>
+
+      <br>
+    `)
+
+  $('form').trigger('reset')
+}
+
+const showGameFail = function (response) {
+  console.log('Show Game Failed ', response)
+  $('#games-played').html('')
+  failureMessage('Game Not Found :(')
+  $('form').trigger('reset')
 }
 
 module.exports = {
@@ -90,6 +115,7 @@ module.exports = {
   updateGameSuccess,
   updateGameFail,
   indexGamesSuccess,
-  indexGamesFail
-// newMove
+  indexGamesFail,
+  showGameSuccess,
+  showGameFail
 }
