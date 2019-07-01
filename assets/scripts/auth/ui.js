@@ -3,7 +3,7 @@
 const store = require('../store')
 
 const successMessage = message => {
-  $('#message').text(message)
+  $('#message').text(message).show().fadeOut(5000)
   $('#message').addClass('success')
   $('#message').removeClass('failure')
 
@@ -12,7 +12,7 @@ const successMessage = message => {
 }
 
 const failureMessage = message => {
-  $('#message').text(message)
+  $('#message').text(message).show()
   $('#message').addClass('failure')
   $('#message').removeClass('success')
 
@@ -21,7 +21,7 @@ const failureMessage = message => {
 }
 
 const signUpSuccessful = () => {
-  successMessage('You Signed Up Successfully!')
+  successMessage('You Signed Up Successfully - Please Sign In To Play!')
 }
 
 const signUpFailure = () => {
@@ -37,6 +37,13 @@ const signInSuccessful = responseData => {
   store.user.xWins = 0
   store.user.oWins = 0
   store.user.ties = 0
+  $('#show-change-pw').show()
+  $('#sign-out').show()
+  $('#new-game').show()
+  $('#show-stats').show()
+  $('#board').show()
+  $('#sign-in').hide()
+  $('#sign-up').hide()
 }
 
 const signInFailure = () => {
@@ -45,6 +52,8 @@ const signInFailure = () => {
 
 const changePwSuccess = () => {
   successMessage('Changed Password Successfully!')
+  $('#change-pw').hide()
+  $('#show-change-pw').show()
 }
 
 const changePwFailure = () => {
@@ -53,6 +62,13 @@ const changePwFailure = () => {
 
 const signOutSuccess = () => {
   successMessage('Signed Out Successfully!')
+  $('#change-pw').hide()
+  $('#sign-out').hide()
+  $('#new-game').hide()
+  $('#show-stats').hide()
+  $('#board').hide()
+  $('#sign-in').show()
+  $('#sign-up').show()
 }
 
 const signOutFailure = () => {

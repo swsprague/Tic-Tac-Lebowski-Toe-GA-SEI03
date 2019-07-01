@@ -10,7 +10,7 @@ const store = require('../store')
 // }
 
 const successMessage = message => {
-  $('#game-status').text(message).fadeOut(3000).addClass('hide')
+  $('#game-status').text(message).show().fadeOut(3000)
   $('#game-status').addClass('success')
   $('#game-status').removeClass('failure')
 
@@ -42,13 +42,8 @@ const updateGameSuccess = responseData => {
   // store.game = responseData.game
   console.log('store is now: ', store)
   console.log('responseData is ', responseData)
-  // moveStatus(`Nice Move`).addClass('show')
   console.log(store.game)
 }
-
-// const moveDisplay = () => {
-//   moveStatus(`Your Turn Player !`)
-// }
 
 const updateGameFail = responseData => {
   failureMessage('No Can Do Compadre')
@@ -68,6 +63,7 @@ const indexGamesSuccess = responseData => {
   store.games = responseData.games
   console.log('index games success ', responseData)
   $('#games-played').html('')
+  $('#total-games').text(`Total Games Played: ${store.games.length}`).show()
 
   store.games.forEach(function (game) {
     const gamesHtml = (`
@@ -81,14 +77,16 @@ const indexGamesSuccess = responseData => {
   })
 
   console.log('store games array length: ', store.games.length)
-
-  $('#total-games').text(`Total Games Played: ${store.games.length}`)
 }
 
 const indexGamesFail = function (error) {
   console.log('Index Games Failed ', error)
   failureMessage('Cannot Load Games')
 }
+
+// const hideGames = function {
+//
+// }
 
 const showGameSuccess = responseData => {
   console.log('show game success ', responseData)

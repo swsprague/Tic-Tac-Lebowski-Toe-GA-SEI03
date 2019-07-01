@@ -11,6 +11,10 @@ const onNewGame = data => {
   event.preventDefault()
 
   $('.sq').on('click', onUpdateGame)
+  $('#hide-stats').hide()
+  $('#show-game').hide()
+  $('#change-pw').hide()
+  $('#show-change-pw').show()
 
   //  $('#current-player').text(`Your Move ${gameFunctions['currentPlayer']}`)
 
@@ -39,14 +43,14 @@ const onUpdateGame = event => {
   //  move.game.cell['value'] = gameFunctions.currentPlayer
   if (gameFunctions.moveCheck(move) !== false) {
     ui.updateGameSuccess()
-    $('#is-taken').text('Nice Move!')
+    $('#is-taken').text('Nice Move!').show().fadeOut(3000)
   } else if (gameFunctions.moveCheck(move) === false) {
-    $('#is-taken').text('This Square Is Taken!')
+    $('#is-taken').text('This Square Is Taken!').show().fadeOut(3000)
   }
 
   const winner = gameFunctions.winningState(move)
   if (gameFunctions.checkWinner(move)) {
-    $('#is-taken').text(`Player ${winner} Wins!`)
+    $('#game-status').text(`Player ${winner} Wins!`).fadeIn(650)
 
     if (winner === 'X') {
       currentGame.winner = 'X Wins'
@@ -59,7 +63,7 @@ const onUpdateGame = event => {
   }
 
   if (gameFunctions.checkTie(move) === true) {
-    $('#is-taken').text('Itza tie womp womp :|')
+    $('#game-status').text('Itza tie womp womp :|').fadeIn(2000)
     currentGame.winner = 'Tie'
     gameUser.ties += 1
     gameFunctions.isOver()
@@ -90,6 +94,15 @@ const onCheckGames = data => {
   $('#x-wins').text(`Current X Wins: ${gameUser.xWins}`)
   $('#o-wins').text(`Current O Wins: ${gameUser.oWins}`)
   $('#ties').text(`Current Ties: ${gameUser.ties}`)
+
+  $('#hide-stats').show()
+  $('#show-game').show()
+  $('#games-played').show()
+  $('#x-wins').show()
+  $('#o-wins').show()
+  $('#ties').show()
+  $('#board').hide()
+  $('#game-status').hide()
 
   api.indexGames()
     .then(ui.indexGamesSuccess)
