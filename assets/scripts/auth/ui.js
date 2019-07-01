@@ -22,6 +22,7 @@ const failureMessage = message => {
 
 const signUpSuccessful = () => {
   successMessage('You Signed Up Successfully - Please Sign In To Play!')
+  $('#sign-up').hide()
 }
 
 const signUpFailure = () => {
@@ -41,7 +42,7 @@ const signInSuccessful = responseData => {
   $('#sign-out').show()
   $('#new-game').show()
   $('#show-stats').show()
-  $('#board').show()
+  $('.gameboard').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
 }
@@ -63,12 +64,13 @@ const changePwFailure = () => {
 const signOutSuccess = () => {
   successMessage('Signed Out Successfully!')
   $('#change-pw').hide()
+  $('#show-change-pw').hide()
   $('#sign-out').hide()
   $('#new-game').hide()
   $('#show-stats').hide()
-  $('#board').hide()
-  $('#sign-in').show()
-  $('#sign-up').show()
+  $('.gameboard').hide()
+  $('#show-sign-in').show()
+  $('#show-sign-up').show()
 }
 
 const signOutFailure = () => {

@@ -32,6 +32,8 @@ const newGameStart = responseData => {
   console.log('store is ', store)
   successMessage('NEW GAME: START')
   $('#current-player').text(`Your Move Player X`)
+  $('#player-icon-x').text('X = Tic-Tacs')
+  $('#player-icon-o').text('O = Toe')
 }
 
 const newGameFail = () => {

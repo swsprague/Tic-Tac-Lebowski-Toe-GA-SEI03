@@ -10,9 +10,17 @@ const gameEvents = require('./game-engine/game-events')
 
 $(() => {
   // your JS code goes here
-  $('#board').hide()
-  $('#sign-up').on('submit', authEvents.onSignUp)
-  $('#sign-in').on('submit', authEvents.onSignIn)
+  $('.gameboard').hide()
+  $('#show-sign-up').on('click', function () {
+    $('#sign-up').show()
+    $('#show-sign-up').hide()
+  })
+  $('#sign-up').on('submit', authEvents.onSignUp).hide()
+  $('#show-sign-in').on('click', function () {
+    $('#sign-in').show()
+    $('#show-sign-in').hide()
+  })
+  $('#sign-in').on('submit', authEvents.onSignIn).hide()
   $('#quick').on('click', authEvents.onQuickSignIn)
   $('#show-change-pw').on('click', function () {
     $('#change-pw').show()
@@ -29,7 +37,8 @@ $(() => {
     $('#ties').hide()
     $('#total-games').hide()
     $('#show-game').hide()
-    $('#board').show()
+    $('#hide-stats').hide()
+    $('.gameboard').show()
     $('#game-status').show()
   }).hide()
   $('#show-game').on('submit', gameEvents.onShowGame).hide()

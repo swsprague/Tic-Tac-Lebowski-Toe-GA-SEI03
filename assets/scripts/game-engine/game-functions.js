@@ -24,12 +24,12 @@ const changePlayer = function () {
 
   $('#current-player').text(`Your Move Player ${currentPlayer}`)
   if (currentPlayer === 'X') {
-    $(event.target).text('X')
+    $(event.target).prepend($('<img>', {id: 'tic-tac', src: 'https://i.imgur.com/2EoSvfi.png'}))
     turnCount += 1
     currentPlayer = 'O'
     $('#current-player').text(`Your Move Player ${currentPlayer}`)
   } else {
-    $(event.target).text('O')
+    $(event.target).prepend($('<img>', {id: 'severed-toe', src: 'https://i.imgur.com/dMcQzTI.png'}))
     turnCount += 1
     currentPlayer = 'X'
     $('#current-player').text(`Your Move Player ${currentPlayer}`)
@@ -102,6 +102,8 @@ const winningState = function (game) {
 const isOver = function () {
   const gameBoard = store.game
   $('#current-player').text('')
+  $('#player-icon-x').text('')
+  $('#player-icon-o').text('')
   $('.sq').off('click')
   gameBoard.over = true
 }
