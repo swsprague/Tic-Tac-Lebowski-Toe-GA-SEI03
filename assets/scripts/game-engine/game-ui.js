@@ -2,12 +2,12 @@
 
 const store = require('../store')
 
-const moveStatus = message => {
-  $('#is-taken').text(message)
-
-  // clear forms
-  $('form').trigger('reset')
-}
+// const moveStatus = message => {
+//   $('#is-taken').text(message)
+//
+//   // clear forms
+//   $('form').trigger('reset')
+// }
 
 const successMessage = message => {
   $('#game-status').text(message).fadeOut(3000).addClass('hide')
@@ -67,7 +67,6 @@ module.exports = {
   newGameStart,
   newGameFail,
   updateGameSuccess,
-  updateGameFail,
-  moveStatus
+  updateGameFail
 // newMove
 }

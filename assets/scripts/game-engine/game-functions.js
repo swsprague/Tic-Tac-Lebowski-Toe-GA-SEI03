@@ -4,7 +4,9 @@ const store = require('../store')
 
 console.log('store rn: ', store)
 
+
 let currentPlayer = 'X'
+let turnCount = 0
 // let clicks = 0
 
 const changePlayer = function () {
@@ -24,13 +26,24 @@ const changePlayer = function () {
   $('#current-player').text(`Your Move Player ${currentPlayer}`)
   if (currentPlayer === 'X') {
     $(event.target).text('X')
+    turnCount += 1
     currentPlayer = 'O'
     $('#current-player').text(`Your Move Player ${currentPlayer}`)
   } else {
     $(event.target).text('O')
+    turnCount += 1
     currentPlayer = 'X'
     $('#current-player').text(`Your Move Player ${currentPlayer}`)
   }
+
+  console.log('turn count is ', turnCount)
+}
+
+const defaultState = function () {
+  $('.sq').text('')
+  $('#is-taken').text('')
+  currentPlayer = 'X'
+  turnCount = 0
 }
 
 const moveCheck = function (move) {
@@ -42,6 +55,7 @@ const moveCheck = function (move) {
     gameBoard.cells.splice(event.target.id, 1, currentPlayer)
     changePlayer()
   } else if (gameBoard.cells[event.target.id] !== '') {
+    console.log(gameBoard.cells[event.target.id])
     return false
   }
 }
@@ -86,6 +100,13 @@ const winningState = function (game) {
   }
 }
 
+const isOver = function () {
+  const gameBoard = store.game
+  $('#current-player').text('')
+  $('.sq').off('click')
+  gameBoard.over = true
+}
+
 const checkWinner = function (move) {
   const gameBoard = store.game
   console.log('gameBoard checkwin is: ', gameBoard)
@@ -95,6 +116,20 @@ const checkWinner = function (move) {
     return false
   }
 }
+
+const checkTie = function (move) {
+  console.log('check tie turn count is', turnCount)
+
+  if ((turnCount >= 8) && (checkWinner(move) === false)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// const checkTie = function (move) {
+//
+// }
 
 // if (winningState === true) {
 //   $('#game-status').text(currentPlayer + ' is the winner!!')
@@ -143,11 +178,13 @@ const checkWinner = function (move) {
 // }
 
 module.exports = {
-  // winningState,
   changePlayer,
   moveCheck,
   winningState,
   checkWinner,
-  currentPlayer
+  currentPlayer,
+  defaultState,
+  isOver,
+  checkTie
 
 }
