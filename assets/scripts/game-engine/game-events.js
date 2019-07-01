@@ -69,7 +69,7 @@ const onUpdateGame = event => {
   //  $('#current-player').text(`Your Move ${move['value']}`)
   // move.game.over = gameFunctions.isOver()
   api.updateGame(move)
-//   .then(ui.updateGameSuccess)
+// \\   .then(ui.updateGameSuccess)
 //    .catch(ui.updateGameFail)
 }
 
