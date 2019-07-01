@@ -46,7 +46,7 @@ const defaultState = function () {
   turnCount = 0
 }
 
-const moveCheck = function () {
+const moveCheck = function (move) {
   const gameBoard = store.game
   console.log('square is: ', event.target.id)
   console.log('gameBoard is ', gameBoard)

@@ -27,13 +27,13 @@ const onUpdateGame = event => {
   console.log('store is currently: ', store)
   // const gameBoard = store.game.cells
   event.preventDefault()
-  const move = {
+  let move = {
     game: {
       cell: {
-        index: event.target.id,
-        value: currentGame.cells[event.target.id]
+        index: '',
+        value: ''
       },
-      over: currentGame.over
+      over: ''
     }
   }
   //  move.game.cell['index'] = event.target.id
@@ -68,9 +68,20 @@ const onUpdateGame = event => {
 
   //  $('#current-player').text(`Your Move ${move['value']}`)
   // move.game.over = gameFunctions.isOver()
+  move = {
+    game: {
+      cell: {
+        index: event.target.id,
+        value: currentGame.cells[event.target.id]
+      },
+      over: currentGame.over,
+      winner: currentGame.winner
+    }
+  }
+
   api.updateGame(move)
-// \\   .then(ui.updateGameSuccess)
-//    .catch(ui.updateGameFail)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFail)
 }
 
 const onCheckGames = data => {

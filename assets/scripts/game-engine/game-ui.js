@@ -41,6 +41,7 @@ const newGameFail = () => {
 const updateGameSuccess = responseData => {
   // store.game = responseData.game
   console.log('store is now: ', store)
+  console.log('responseData is ', responseData)
   // moveStatus(`Nice Move`).addClass('show')
   console.log(store.game)
 }
@@ -68,15 +69,13 @@ const indexGamesSuccess = responseData => {
   $('#games-played').html('')
 
   responseData.games.forEach(function (game) {
-    for (let i = 0; i < game.length; i++) {
-      const gamesHtml = (`
-        <h4>Game ID: ${game[i].id}</h4>
-        <p>Completed?: ${game[i].over}</p>
-        <p>Result: ${game[i].winner}</p>
-        <br>
-      `)
-      $('#games-played').append(gamesHtml)
-    }
+    const gamesHtml = (`
+      <h4>Game ID: ${game.id}</h4>
+      <p>Completed: ${game.over}</p>
+      <p>Result: ${game.winner}</p>
+      <br>
+    `)
+    $('#games-played').append(gamesHtml)
   })
 }
 
