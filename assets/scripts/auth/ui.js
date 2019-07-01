@@ -34,6 +34,9 @@ const signInSuccessful = responseData => {
   // keep track of user so we have token for api
   // we use store so we can access the token in any file.
   store.user = responseData.user
+  store.user.xWins = 0
+  store.user.oWins = 0
+  store.user.ties = 0
 }
 
 const signInFailure = () => {

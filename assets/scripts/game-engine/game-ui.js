@@ -63,10 +63,34 @@ const updateGameFail = responseData => {
 // $('form').trigger('reset')
 // }
 
+const indexGamesSuccess = responseData => {
+  console.log('index games success ', responseData)
+  $('#games-played').html('')
+
+  responseData.games.forEach(function (game) {
+    for (let i = 0; i < game.length; i++) {
+      const gamesHtml = (`
+        <h4>Game ID: ${game[i].id}</h4>
+        <p>Completed?: ${game[i].over}</p>
+        <p>Result: ${game[i].winner}</p>
+        <br>
+      `)
+      $('#games-played').append(gamesHtml)
+    }
+  })
+}
+
+const indexGamesFail = function (error) {
+  console.log('Index Games Failed ', error)
+  failureMessage('Cannot Load Games')
+}
+
 module.exports = {
   newGameStart,
   newGameFail,
   updateGameSuccess,
-  updateGameFail
+  updateGameFail,
+  indexGamesSuccess,
+  indexGamesFail
 // newMove
 }

@@ -17,7 +17,7 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#new-game').on('click', gameEvents.currentPlayer)
-  $('.sq').on('click', gameEvents.onUpdateGame)
-  $('.sq')
+  $('#show-stats').on('click', gameEvents.onCheckGames)
+
   // $(event.target).text('x')
 })

@@ -52,7 +52,7 @@ const moveCheck = function (move) {
   console.log('gameBoard is ', gameBoard)
   console.log('square is: ', event.target.id)
   if (gameBoard.cells[event.target.id] === '') {
-    gameBoard.cells.splice(event.target.id, 1, currentPlayer)
+    gameBoard.cells[event.target.id] = currentPlayer
     changePlayer()
   } else if (gameBoard.cells[event.target.id] !== '') {
     console.log(gameBoard.cells[event.target.id])
@@ -120,7 +120,7 @@ const checkWinner = function (move) {
 const checkTie = function (move) {
   console.log('check tie turn count is', turnCount)
 
-  if ((turnCount >= 8) && (checkWinner(move) === false)) {
+  if ((turnCount === 9) && (checkWinner(move) === false)) {
     return true
   } else {
     return false

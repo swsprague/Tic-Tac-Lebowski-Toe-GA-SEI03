@@ -22,6 +22,8 @@ const onNewGame = data => {
 }
 
 const onUpdateGame = event => {
+  const gameUser = store.user
+  const currentGame = store.game
   console.log('store is currently: ', store)
   // const gameBoard = store.game.cells
   event.preventDefault()
@@ -29,9 +31,9 @@ const onUpdateGame = event => {
     game: {
       cell: {
         index: event.target.id,
-        value: gameFunctions.currentPlayer
+        value: currentGame.cells[event.target.id]
       },
-      over: 'false'
+      over: currentGame.over
     }
   }
   //  move.game.cell['index'] = event.target.id
@@ -45,32 +47,47 @@ const onUpdateGame = event => {
 
   const winner = gameFunctions.winningState(move)
   if (gameFunctions.checkWinner(move)) {
-    $('#is-taken').text(`Player ${gameFunctions.winningState(move)} Wins!`)
+    $('#is-taken').text(`Player ${winner} Wins!`)
 
     if (winner === 'X') {
-      store.xWins += 1
+      currentGame.winner = 'X Wins'
+      gameUser.xWins += 1
     } else if (winner === 'O') {
-      store.oWins += 1
+      currentGame.winner = 'O Wins'
+      gameUser.oWins += 1
     }
     gameFunctions.isOver()
   }
 
   if (gameFunctions.checkTie(move) === true) {
     $('#is-taken').text('Itza tie womp womp :|')
-    store.ties += 1
+    currentGame.winner = 'Tie'
+    gameUser.ties += 1
+    gameFunctions.isOver()
   }
 
   //  $('#current-player').text(`Your Move ${move['value']}`)
   // move.game.over = gameFunctions.isOver()
   api.updateGame(move)
-//    .then(ui.updateGameSuccess)
+//   .then(ui.updateGameSuccess)
 //    .catch(ui.updateGameFail)
 }
 
+const onCheckGames = data => {
+  const gameUser = store.user
+  event.preventDefault()
+  $('#x-wins').text(`X Wins: ${gameUser.xWins}`)
+  $('#o-wins').text(`O Wins: ${gameUser.oWins}`)
+  $('#ties').text(`Ties: ${gameUser.ties}`)
 
+  api.indexGames()
+    .then(ui.indexGamesSuccess)
+    .catch(ui.indexGamesFail)
+}
 
 module.exports = {
   onNewGame,
-  onUpdateGame
+  onUpdateGame,
+  onCheckGames
 
 }

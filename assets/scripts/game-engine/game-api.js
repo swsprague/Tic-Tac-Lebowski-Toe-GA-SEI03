@@ -25,7 +25,19 @@ const updateGame = (data) => {
   })
 }
 
+const indexGames = function () {
+  // make GET request to /books
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   newGame,
-  updateGame
+  updateGame,
+  indexGames
 }

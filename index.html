@@ -46,35 +46,42 @@
 
       <button id="new-game" class="btn btn-primary col-mb-3">New Game!</button>
 
+      <button id="show-stats" class="btn btn-primary col-mb-3">Check Your Stats</button>
       </div>
 <br>
 <br>
 <br>
+      <h3 class="row">
+        <h3 id="x-wins"></h3>
+        <h3 id="o-wins"></h3>
+        <h3 id="ties"></h3>
+      </h3>
+      <div id="games-played"></div>
 
       <h3 id="game-status"></h3>
       <h3 id="is-taken"></h3>
       <h3 id="current-player"></h3>
 
 
-
+      <section id="board">
       <div class="row">
-        <div class="sq bottom right" id="0">0</div>
-        <div class="sq bottom right" id="3">3</div>
-        <div class="sq bottom" id="6">6</div>
+        <div class="sq cells bottom right" id="0">0</div>
+        <div class="sq cells bottom right" id="3">3</div>
+        <div class="sq cells bottom" id="6">6</div>
       </div>
 
       <div class="row">
-        <div class="sq bottom right" id="1">1</div>
-        <div class="sq bottom right" id="4">4</div>
-        <div class="sq bottom" id="7">7</div>
+        <div class="sq cells bottom right" id="1">1</div>
+        <div class="sq cells bottom right" id="4">4</div>
+        <div class="sq cells bottom" id="7">7</div>
       </div>
 
       <div class="row">
-        <div class="sq right" id="2">2</div>
-        <div class="sq right" id="5">5</div>
-        <div class="sq" id="8">8</div>
+        <div class="sq cells right" id="2">2</div>
+        <div class="sq cells right" id="5">5</div>
+        <div class="sq cells" id="8">8</div>
       </div>
-
+    </section>
 
       <!-- <div class="row">
         <form id="sign-up" class="col-md-6 mb-5">
