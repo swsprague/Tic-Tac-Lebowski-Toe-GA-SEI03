@@ -1,3 +1,6 @@
+$body-bg: skyblue;
+$border-radius: 25%;
+
 @import '~bootstrap/scss/bootstrap';
 
 // .column1,
@@ -12,23 +15,72 @@
 //
 // }
 
-.row {
+// .row {
+//   display: flex;
+//   justify-content: center;
+// }
+
+.gameboard {
+  width: 100vmin;
+}
+
+.tic-tac {
+  align-items: center;
   display: flex;
+  font-family: 'Galindo', cursive;
   justify-content: center;
 }
 
+.toe {
+  align-items: center;
+  display: flex;
+  font-family: 'Monoton', cursive;
+  justify-content: center;
+}
 
+img {
+  height: 25vmin;
+  width: 25vmin;
+}
 
-.sq {
-  border: 2px solid skyblue;
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: x-large;
-  height: 200px;
-  margin-right: -3px;
-  padding-top: 30px;
-  text-align: center;
-  transition: background .3s;
-  vertical-align: top;
-  width: 200px;
+.row,
+h3,
+h2 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  right: 0;
+}
+
+// .sq {
+//   border: 2px solid skyblue;
+//   cursor: pointer;
+//   font-family: sans-serif;
+//   font-size: x-large;
+//   height: 200px;
+//   margin-right: -3px;
+//   padding-top: 30px;
+//   text-align: center;
+//   transition: background .3s;
+//   vertical-align: top;
+//   width: 200px;
+// }
+
+.cells {
+  align-items: center;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  display: flex;
+  font-size: 10vmin;
+  height: calc(100% / 3);
+  justify-content: center;
+}
+
+.cells:nth-child(3n) {
+  border-right: 0;
+}
+
+.cells:nth-last-child(-1n + 3) {
+  border-bottom: 0;
 }
