@@ -7,7 +7,7 @@ const store = require('../store')
 const getFormFields = require('./../../../lib/get-form-fields')
 
 const onNewGame = data => {
-  console.log('data is: ', data)
+  // console.log('data is: ', data)
   event.preventDefault()
 
   $('.sq').on('click', onUpdateGame)
@@ -23,7 +23,7 @@ const onNewGame = data => {
 const onUpdateGame = event => {
   const gameUser = store.user
   const currentGame = store.game
-  console.log('store is currently: ', store)
+  // console.log('store is currently: ', store)
   // const gameBoard = store.game.cells
   event.preventDefault()
   let move = {
@@ -116,7 +116,7 @@ const onShowGame = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
 
-  console.log('This is the form data ', formData.game)
+  // console.log('This is the form data ', formData.game)
 
   api.showGame(formData.game.id)
     .then(ui.showGameSuccess)

@@ -2,7 +2,7 @@
 
 const store = require('../store')
 
-console.log('store rn: ', store)
+// console.log('store rn: ', store)
 
 store.currentPlayer = 'X'
 let turnCount = 0
@@ -40,7 +40,7 @@ const changePlayer = function () {
     $('#current-player').text(`Your Move Player ${store.currentPlayer}`)
   }
 
-  console.log('turn count is ', turnCount)
+  // console.log('turn count is ', turnCount)
 }
 
 const defaultState = function () {
@@ -52,14 +52,14 @@ const defaultState = function () {
 
 const moveCheck = function (move) {
   const gameBoard = store.game
-  console.log('square is: ', event.target.id)
-  console.log('gameBoard is ', gameBoard)
-  console.log('square is: ', event.target.id)
+  // console.log('square is: ', event.target.id)
+  // console.log('gameBoard is ', gameBoard)
+  // console.log('square is: ', event.target.id)
   if (gameBoard.cells[event.target.id] === '') {
     gameBoard.cells[event.target.id] = store.currentPlayer
     changePlayer()
   } else if (gameBoard.cells[event.target.id] !== '') {
-    console.log(gameBoard.cells[event.target.id])
+    // console.log(gameBoard.cells[event.target.id])
     return false
   }
 }
@@ -67,7 +67,7 @@ const moveCheck = function (move) {
 const winningState = function (game) {
   const gameBoard = store.game
 
-  console.log('gameBoard at winState is: ', gameBoard)
+  // console.log('gameBoard at winState is: ', gameBoard)
 
   const sqZero = gameBoard.cells[0]
   const sqThree = gameBoard.cells[3]
@@ -81,8 +81,8 @@ const winningState = function (game) {
   const sqFive = gameBoard.cells[5]
   const sqEight = gameBoard.cells[8]
 
-  console.log('sqEight is ', sqEight)
-  console.log('statement is ', (sqEight === sqSeven) && (sqSeven === sqSix))
+  // console.log('sqEight is ', sqEight)
+  // console.log('statement is ', (sqEight === sqSeven) && (sqSeven === sqSix))
 
   if ((sqZero === sqThree) && (sqThree === sqSix) && (sqZero !== '')) {
     return sqSix
@@ -115,8 +115,8 @@ const isOver = function () {
 }
 
 const checkWinner = function (move) {
-  const gameBoard = store.game
-  console.log('gameBoard checkwin is: ', gameBoard)
+  // const gameBoard = store.game
+  // console.log('gameBoard checkwin is: ', gameBoard)
   if (winningState(move)) {
     return true
   } else {
@@ -125,7 +125,7 @@ const checkWinner = function (move) {
 }
 
 const checkTie = function (move) {
-  console.log('check tie turn count is', turnCount)
+  // console.log('check tie turn count is', turnCount)
 
   if ((turnCount === 9) && (checkWinner(move) === false)) {
     return true
