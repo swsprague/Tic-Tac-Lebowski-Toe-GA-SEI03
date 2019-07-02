@@ -3,7 +3,7 @@
 const store = require('../store')
 
 const successMessage = message => {
-  $('#message').text(message).show().fadeOut(5000)
+  $('#message').text(message).show().fadeOut(4000)
   $('#message').addClass('success')
   $('#message').removeClass('failure')
 
@@ -42,6 +42,7 @@ const signInSuccessful = responseData => {
   $('#sign-out').show()
   $('#new-game').show()
   $('#show-stats').show()
+  $('.giphy-embed').attr('hidden', false)
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#show-sign-up').hide()
@@ -73,6 +74,7 @@ const signOutSuccess = () => {
   $('#current-player').hide()
   $('#player-icon-x').hide()
   $('#player-icon-o').hide()
+  $('.giphy-embed').attr('hidden', true)
   $('#show-sign-in').show()
   $('#show-sign-up').show()
 }
