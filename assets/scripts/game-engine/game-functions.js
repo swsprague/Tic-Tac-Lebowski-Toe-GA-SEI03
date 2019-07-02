@@ -4,7 +4,7 @@ const store = require('../store')
 
 console.log('store rn: ', store)
 
-let currentPlayer = 'X'
+store.currentPlayer = 'X'
 let turnCount = 0
 // let clicks = 0
 
@@ -22,20 +22,22 @@ const changePlayer = function () {
 //   }
 // }
 
-  $('#current-player').text(`Your Move Player ${currentPlayer}`)
-  if (currentPlayer === 'X') {
+  $('#current-player').text(`Your Move Player ${store.currentPlayer}`)
+  if (store.currentPlayer === 'X') {
+    // $(event.target).text('X')
     $(event.target).prepend($('<img>', {id: 'tic-tac', src: 'https://i.imgur.com/2EoSvfi.png'}))
     // $(event.target).on('click', function () {
     //   ('#toe').trigger('play')
     // })
     turnCount += 1
-    currentPlayer = 'O'
-    $('#current-player').text(`Your Move Player ${currentPlayer}`)
+    store.currentPlayer = 'O'
+    $('#current-player').text(`Your Move Player ${store.currentPlayer}`)
   } else {
+    // $(event.target).text('O')
     $(event.target).prepend($('<img>', {id: 'severed-toe', src: 'https://i.imgur.com/dMcQzTI.png'}))
     turnCount += 1
-    currentPlayer = 'X'
-    $('#current-player').text(`Your Move Player ${currentPlayer}`)
+    store.currentPlayer = 'X'
+    $('#current-player').text(`Your Move Player ${store.currentPlayer}`)
   }
 
   console.log('turn count is ', turnCount)
@@ -44,7 +46,7 @@ const changePlayer = function () {
 const defaultState = function () {
   $('.sq').text('')
   $('#is-taken').text('')
-  currentPlayer = 'X'
+  store.currentPlayer = 'X'
   turnCount = 0
 }
 
@@ -54,8 +56,8 @@ const moveCheck = function (move) {
   console.log('gameBoard is ', gameBoard)
   console.log('square is: ', event.target.id)
   if (gameBoard.cells[event.target.id] === '') {
-    gameBoard.cells[event.target.id] = currentPlayer
-    changePlayer()
+    gameBoard.cells[event.target.id] = store.currentPlayer
+    // changePlayer()
   } else if (gameBoard.cells[event.target.id] !== '') {
     console.log(gameBoard.cells[event.target.id])
     return false
@@ -82,38 +84,22 @@ const winningState = function (game) {
   console.log('sqEight is ', sqEight)
   console.log('statement is ', (sqEight === sqSeven) && (sqSeven === sqSix))
 
-  if (((sqZero === sqThree) && (sqThree === sqSix)) || ((sqSix === sqThree) && (sqThree === sqZero))) {
+  if ((sqZero === sqThree) && (sqThree === sqSix) && (sqZero !== '')) {
     return sqSix
-  } else if (((sqOne === sqFour) && (sqFour === sqSeven)) || ((sqSeven === sqFour) && (sqFour === sqOne))) {
+  } else if ((sqOne === sqFour) && (sqFour === sqSeven) && (sqOne !== '')) {
     return sqSeven
-  } else if (((sqTwo === sqFive) && (sqFive === sqEight)) || ((sqEight === sqFive) && (sqFive === sqTwo))) {
+  } else if ((sqTwo === sqFive) && (sqFive === sqEight) && (sqTwo !== '')) {
     return sqEight
-  } else if (((sqZero === sqOne) && (sqOne === sqTwo)) || ((sqTwo === sqOne) && (sqOne === sqZero))) {
+  } else if ((sqZero === sqOne) && (sqOne === sqTwo) && (sqZero !== '')) {
     return sqTwo
-  } else if (((sqThree === sqFour) && (sqFour === sqFive)) || ((sqFive === sqFour) && (sqFour === sqThree))) {
+  } else if ((sqThree === sqFour) && (sqFour === sqFive) && (sqThree !== '')) {
     return sqFive
-  } else if (((sqSix === sqSeven) && (sqSeven === sqEight)) || ((sqEight === sqSeven) && (sqSeven === sqSix))) {
+  } else if ((sqSix === sqSeven) && (sqSeven === sqEight) && (sqSix !== '')) {
     return sqEight
-  } else if (((sqZero === sqFour) && (sqFour === sqEight)) || ((sqEight === sqFour) && (sqFour === sqZero))) {
+  } else if ((sqZero === sqFour) && (sqFour === sqEight) && (sqZero !== '')) {
     return sqEight
-  } else if (((sqTwo === sqFour) && (sqFour === sqSix)) || ((sqSix === sqFour) && (sqFour === sqTwo))) {
+  } else if ((sqTwo === sqFour) && (sqFour === sqSix) && (sqTwo !== '')) {
     return sqSix
-  // } else if ((sqSix === sqFour) && (sqFour === sqTwo)) {
-  //   return sqTwo
-  // } else if ((sqEight === sqFour) && (sqFour === sqZero)) {
-  //   return sqZero
-  // } else if ((sqEight === sqSeven) && (sqSeven === sqSix)) {
-  //   return sqSix
-  // } else if ((sqFive === sqFour) && (sqFour === sqThree)) {
-  //   return sqThree
-  // } else if ((sqTwo === sqOne) && (sqOne === sqZero)) {
-  //   return sqZero
-  // } else if ((sqEight === sqFive) && (sqFive === sqTwo)) {
-  //   return sqTwo
-  // } else if ((sqSeven === sqFour) && (sqFour === sqOne)) {
-  //   return sqOne
-  // } else if ((sqSix === sqThree) && (sqThree === sqZero)) {
-  //   return sqZero
   } else {
     return false
   }
@@ -121,9 +107,9 @@ const winningState = function (game) {
 
 const isOver = function () {
   const gameBoard = store.game
-  $('#current-player').text('')
-  $('#player-icon-x').text('')
-  $('#player-icon-o').text('')
+  $('#current-player').hide()
+  $('#player-icon-x').hide()
+  $('#player-icon-o').hide()
   $('.sq').off('click')
   gameBoard.over = true
 }
@@ -131,7 +117,7 @@ const isOver = function () {
 const checkWinner = function (move) {
   const gameBoard = store.game
   console.log('gameBoard checkwin is: ', gameBoard)
-  if (winningState(gameBoard)) {
+  if (winningState(move)) {
     return true
   } else {
     return false
@@ -148,62 +134,11 @@ const checkTie = function (move) {
   }
 }
 
-// const checkTie = function (move) {
-//
-// }
-
-// if (winningState === true) {
-//   $('#game-status').text(currentPlayer + ' is the winner!!')
-//   $(event.target).text(currentPlayer)
-// } else {
-//   changePlayer()
-// check for draw function
-// }
-
-//   if (/*check for draw function is true*/) {
-//     $('#game-status').text('Itza Tie :|')
-//   }
-//
-//   if (winningState() === true || draw == true) {
-//     // endGame function
-//   }
-// }
-
-// $('.sq').on('click', function (event) {
-//   console.log('player selected ', event.target.id)
-//   gameBoard.splice(event.target.id, 1, currentPlayer)
-//   $(event.target).off('click')
-//   console.log(gameBoard)
-//   console.log('Your Move, ' + currentPlayer)
-
-// const sqZero = $('#0').text()
-// const sqThree = $('#3').text()
-// const sqSix = $('#6').text()
-//
-// const sqOne = $('#1').text()
-// const sqFour = $('#4').text()
-// const sqSeven = $('#7').text()
-//
-// const sqTwo = $('#2').text()
-// const sqFive = $('#5').text()
-// const sqEight = $('#8').text()
-//
-// const winningState = function () {
-//   if ((sqZero === sqThree) && (sqThree === sqSix)) {
-//     return sqSix
-//   } else if ((sqOne === sqFour) && (sqFour === sqSeven)) {
-//     return sqSeven
-//   } else if ((sqTwo === sqFive) && (sqFive === sqEight)) {
-//     return sqEight
-// }
-// }
-
 module.exports = {
   changePlayer,
   moveCheck,
   winningState,
   checkWinner,
-  currentPlayer,
   defaultState,
   isOver,
   checkTie

@@ -80,6 +80,8 @@ const onUpdateGame = event => {
   api.updateGame(move)
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFail)
+
+  gameFunctions.changePlayer()
 }
 
 const onCheckGames = data => {

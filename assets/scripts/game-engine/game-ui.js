@@ -39,6 +39,11 @@ const newGameStart = responseData => {
   $('#hide-stats').hide()
   $('#show-game').hide()
   $('#change-pw').hide()
+  $('#games-played').hide()
+  $('#total-games').hide()
+  $('#x-wins').hide()
+  $('#o-wins').hide()
+  $('#ties').hide()
 }
 
 const newGameFail = () => {
