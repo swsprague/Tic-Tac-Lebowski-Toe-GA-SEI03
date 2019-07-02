@@ -78,7 +78,7 @@ mountain.</p>
 <li>As a user, I want to be able to change my password when signed in.</li>
 <li>As a user, I want to be able to easily sign out.</li>
 <li>Bonus: As a user, I want to be able to control sound effects and music in case I'm in an environment that's not conducive to noise.</li>
-<ul>
+</ul>
 
 <h2>How to represent the board in JS:</h2>
 
@@ -86,17 +86,17 @@ mountain.</p>
 
 <p>As far as the engine goes, I planned to utilize the array listed in the game API to track which move has been entered into the board, using the 9 indices (0-8) to track the location of the move on the board. The Board itself would be represented in the array on a left to right readout, with the index of 0 indicating the upper left square on the board, 1 being the upper middle, 2 being upper right, 3 being middle left, and so on. Planned to have it look like this:</p>
 
-
 <p>0 1 2</p>
 <p>3 4 5</p>
 <p>6 7 8</p>
 
-
-<h2>How I will approach the project:<h2>
+<h2>How I will approach the project<h2>
 
 <p>My first move will be to set up my repository and do an initial deployment. Then I'll go about setting up the initial html for the board layout, followed by setting up the API communication, as well as get the initial user authentication process up and running. Then I'll do a second deployment.</p>
 
-<p>Once that's in place, I'll write the game engine in javascript, attempting to get a working version of the game as a well as the required features (score tracking, user notifications, etc) before I work on refactoring and tightening it up. I will do multiple tests for UI bugs caused by my code, rework as needed until I have a basic working version of the app, and do another deployment once it's up and running.</p>
+<p>Once that's in place, I'll write the game engine in javascript, attempting to get a working version of the game as a well as the required features (score tracking, user notifications, etc) before I work on refactoring and tightening it up.</p>
+
+<p>I will do multiple tests for UI bugs caused by my code, rework as needed until I have a basic working version of the app, and do another deployment once it's up and running.</p>
 
 <p>From there, I'll look to incorporate some CSS styling and work on implementing the unique features I envisioned at the start of the assignment. Obviously, I'll look to ensure that all the initial requirements for the project, including the Read Me and documentation requirements, are all completed before embarking on the final styling process.</p>
 
@@ -122,7 +122,7 @@ mountain.</p>
 <li>testing</li>
 <li>post-test (ready to push / deploy)</li>
 </ul>
-
+<br>
 <p>I will try to consistently commit in phases. During the pre-test phase, I will commit each time a section of code is written (i.e. the html, the api, the ajax, the ui, game engine, etc).</p>
 
 <p>During testing phase I will commit each time I've debugged and refactored a piece of code to get it functioning properly.</p>
