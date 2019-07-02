@@ -42,9 +42,9 @@ const signInSuccessful = responseData => {
   $('#sign-out').show()
   $('#new-game').show()
   $('#show-stats').show()
-  $('.gameboard').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
+  $('#show-sign-up').hide()
 }
 
 const signInFailure = () => {
@@ -69,6 +69,10 @@ const signOutSuccess = () => {
   $('#new-game').hide()
   $('#show-stats').hide()
   $('.gameboard').hide()
+  $('#game-status').hide()
+  $('#current-player').hide()
+  $('#player-icon-x').hide()
+  $('#player-icon-o').hide()
   $('#show-sign-in').show()
   $('#show-sign-up').show()
 }

@@ -25,6 +25,9 @@ const changePlayer = function () {
   $('#current-player').text(`Your Move Player ${currentPlayer}`)
   if (currentPlayer === 'X') {
     $(event.target).prepend($('<img>', {id: 'tic-tac', src: 'https://i.imgur.com/2EoSvfi.png'}))
+    // $(event.target).on('click', function () {
+    //   ('#toe').trigger('play')
+    // })
     turnCount += 1
     currentPlayer = 'O'
     $('#current-player').text(`Your Move Player ${currentPlayer}`)
@@ -76,24 +79,41 @@ const winningState = function (game) {
   const sqFive = gameBoard.cells[5]
   const sqEight = gameBoard.cells[8]
 
-  console.log('sqZero is ', sqZero)
+  console.log('sqEight is ', sqEight)
+  console.log('statement is ', (sqEight === sqSeven) && (sqSeven === sqSix))
 
-  if ((sqZero === sqThree) && (sqThree === sqSix)) {
+  if (((sqZero === sqThree) && (sqThree === sqSix)) || ((sqSix === sqThree) && (sqThree === sqZero))) {
     return sqSix
-  } else if ((sqOne === sqFour) && (sqFour === sqSeven)) {
+  } else if (((sqOne === sqFour) && (sqFour === sqSeven)) || ((sqSeven === sqFour) && (sqFour === sqOne))) {
     return sqSeven
-  } else if ((sqTwo === sqFive) && (sqFive === sqEight)) {
+  } else if (((sqTwo === sqFive) && (sqFive === sqEight)) || ((sqEight === sqFive) && (sqFive === sqTwo))) {
     return sqEight
-  } else if ((sqZero === sqOne) && (sqOne === sqTwo)) {
+  } else if (((sqZero === sqOne) && (sqOne === sqTwo)) || ((sqTwo === sqOne) && (sqOne === sqZero))) {
     return sqTwo
-  } else if ((sqThree === sqFour) && (sqFour === sqFive)) {
+  } else if (((sqThree === sqFour) && (sqFour === sqFive)) || ((sqFive === sqFour) && (sqFour === sqThree))) {
     return sqFive
-  } else if ((sqSix === sqSeven) && (sqSeven === sqEight)) {
+  } else if (((sqSix === sqSeven) && (sqSeven === sqEight)) || ((sqEight === sqSeven) && (sqSeven === sqSix))) {
     return sqEight
-  } else if ((sqZero === sqFour) && (sqFour === sqEight)) {
+  } else if (((sqZero === sqFour) && (sqFour === sqEight)) || ((sqEight === sqFour) && (sqFour === sqZero))) {
     return sqEight
-  } else if ((sqTwo === sqFour) && (sqFour === sqSix)) {
+  } else if (((sqTwo === sqFour) && (sqFour === sqSix)) || ((sqSix === sqFour) && (sqFour === sqTwo))) {
     return sqSix
+  // } else if ((sqSix === sqFour) && (sqFour === sqTwo)) {
+  //   return sqTwo
+  // } else if ((sqEight === sqFour) && (sqFour === sqZero)) {
+  //   return sqZero
+  // } else if ((sqEight === sqSeven) && (sqSeven === sqSix)) {
+  //   return sqSix
+  // } else if ((sqFive === sqFour) && (sqFour === sqThree)) {
+  //   return sqThree
+  // } else if ((sqTwo === sqOne) && (sqOne === sqZero)) {
+  //   return sqZero
+  // } else if ((sqEight === sqFive) && (sqFive === sqTwo)) {
+  //   return sqTwo
+  // } else if ((sqSeven === sqFour) && (sqFour === sqOne)) {
+  //   return sqOne
+  // } else if ((sqSix === sqThree) && (sqThree === sqZero)) {
+  //   return sqZero
   } else {
     return false
   }

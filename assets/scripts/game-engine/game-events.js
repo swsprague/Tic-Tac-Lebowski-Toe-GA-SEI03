@@ -11,10 +11,6 @@ const onNewGame = data => {
   event.preventDefault()
 
   $('.sq').on('click', onUpdateGame)
-  $('#hide-stats').hide()
-  $('#show-game').hide()
-  $('#change-pw').hide()
-  $('#show-change-pw').show()
 
   //  $('#current-player').text(`Your Move ${gameFunctions['currentPlayer']}`)
 
@@ -50,8 +46,6 @@ const onUpdateGame = event => {
 
   const winner = gameFunctions.winningState(move)
   if (gameFunctions.checkWinner(move)) {
-    $('#game-status').text(`Player ${winner} Wins!`).fadeIn(650)
-
     if (winner === 'X') {
       currentGame.winner = 'X Wins'
       gameUser.xWins += 1
@@ -59,6 +53,7 @@ const onUpdateGame = event => {
       currentGame.winner = 'O Wins'
       gameUser.oWins += 1
     }
+    $('#game-status').text(`Player ${winner} Wins!`).fadeIn(650)
     gameFunctions.isOver()
   }
 
