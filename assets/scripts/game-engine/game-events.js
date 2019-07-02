@@ -37,11 +37,19 @@ const onUpdateGame = event => {
   }
   //  move.game.cell['index'] = event.target.id
   //  move.game.cell['value'] = gameFunctions.currentPlayer
+
   if (gameFunctions.moveCheck(move) !== false) {
     ui.updateGameSuccess()
     $('#is-taken').text('Nice Move!').show().fadeOut(3000)
   } else if (gameFunctions.moveCheck(move) === false) {
     $('#is-taken').text('This Square Is Taken!').show().fadeOut(3000)
+  }
+
+  if (gameFunctions.checkTie(move) === true) {
+    $('#game-status').text('Itza tie womp womp :|').fadeIn(650)
+    currentGame.winner = 'Tie'
+    gameUser.ties += 1
+    gameFunctions.isOver()
   }
 
   const winner = gameFunctions.winningState(move)
@@ -58,7 +66,7 @@ const onUpdateGame = event => {
   }
 
   if (gameFunctions.checkTie(move) === true) {
-    $('#game-status').text('Itza tie womp womp :|').fadeIn(2000)
+    $('#game-status').text('Itza tie womp womp :|').fadeIn(650)
     currentGame.winner = 'Tie'
     gameUser.ties += 1
     gameFunctions.isOver()
@@ -80,8 +88,6 @@ const onUpdateGame = event => {
   api.updateGame(move)
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFail)
-
-  gameFunctions.changePlayer()
 }
 
 const onCheckGames = data => {

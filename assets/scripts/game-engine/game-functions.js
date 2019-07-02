@@ -57,7 +57,7 @@ const moveCheck = function (move) {
   console.log('square is: ', event.target.id)
   if (gameBoard.cells[event.target.id] === '') {
     gameBoard.cells[event.target.id] = store.currentPlayer
-    // changePlayer()
+    changePlayer()
   } else if (gameBoard.cells[event.target.id] !== '') {
     console.log(gameBoard.cells[event.target.id])
     return false
