@@ -58,12 +58,11 @@ mountain.</p>
 <li>Adding Multiplayer Capabilities</li>
 </ul>
 
-```
 ![Wireframe][logo]
 
 [logo]: https://i.imgur.com/r24VPpO.png "Tic-Tac-Toe Wireframe"
 
-```html
+
 <h1>Planning Stages</h1>
 
 <h2>User Stories:</h2>
@@ -143,5 +142,3 @@ mountain.</p>
 <li>low volume bed music for the duration of each game. Music change when a game ends and a new game is started.</li>
 <li>Leaderboards for wins, losses, and streaks.</li>
 </ul>
-
-```
