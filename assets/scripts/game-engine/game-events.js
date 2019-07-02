@@ -104,8 +104,11 @@ const onCheckGames = data => {
   $('#x-wins').show()
   $('#o-wins').show()
   $('#ties').show()
-  $('.gameboard').hide()
+  $('.sq').hide()
   $('#game-status').hide()
+  $('#current-player').hide()
+  $('#player-icon-x').hide()
+  $('#player-icon-o').hide()
 
   api.indexGames()
     .then(ui.indexGamesSuccess)

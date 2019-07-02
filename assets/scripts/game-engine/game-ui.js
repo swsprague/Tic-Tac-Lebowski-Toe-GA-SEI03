@@ -32,6 +32,7 @@ const newGameStart = responseData => {
   // console.log('store is ', store)
   successMessage('NEW GAME: START')
   $('.gameboard').show()
+  $('.sq').show()
   $('#current-player').text(`Your Move Player X`).show()
   $('#player-icon-x').text('X = Tic-Tacs').show()
   $('#player-icon-o').text('O = Toe').show()

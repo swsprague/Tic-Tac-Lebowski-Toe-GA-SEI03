@@ -24,6 +24,12 @@ $border-radius: 25%;
   width: 100vmin;
 }
 
+.game-board {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 .tic-tac {
   align-items: center;
   display: flex;
@@ -39,6 +45,9 @@ $border-radius: 25%;
 }
 
 img {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   height: 25vmin;
   width: 25vmin;
 }
@@ -84,4 +93,10 @@ h2,
 
 .cells:nth-last-child(-1n + 3) {
   border-bottom: 0;
+}
+
+.sq {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
