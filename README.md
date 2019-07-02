@@ -18,7 +18,7 @@ mountain.</p>
 
 <p>I also found the console.log function to be extremely helpful in determining what my code was actually doing throughout the process. Without this, I would not have been able to wrap my head around the concept of the API POST and PATCH scripts, as well as how I could utilize the "store" object provided as part of our templates to literally store and use some of the information provided by the API responses.</p>
 
-<p>On a similar note, reaching an understanding of how the API works, what it provides, and what it accepts for input was the biggest part in completing this project. It was an extremely abstract concept to me at the start, but within the span of a few days I came to understand it, and am looking forward to desiging my own API when we get to that. </p>
+<p>On a similar note, reaching an understanding of how the API works, what it provides, and what it accepts for input was the biggest part in completing this project. It was an extremely abstract concept to me at the start, but within the span of a few days I came to understand it, and am looking forward to desiging my own API when we get to that.</p>
 
 <p>One more thing: The issue cue saved me seemingly endless frustration at certain points. At first, I was using it to search for similar issues I had encountered and take a look at the solutions found by others who were currently or had previously worked on this project. But in the later stages I realized just how of a useful resource it could be, as I opened several of my own issues and was given some extremely useful guidance en route to finding the solutions I was seeking.</p>
 
@@ -44,6 +44,7 @@ mountain.</p>
 <li>a lot of classes</li>
 <li>a lot of id's</li>
 <li>Bootstrap</li>
+</ul>
 
 <h2>Unsolved Problems for Future Iterations</h2>
 <ul>
@@ -66,26 +67,18 @@ mountain.</p>
 <h1>Planning Stages</h1>
 
 <h2>User Stories:</h2>
-
-<h3>As a player, I want to play tic-tac-toe against myself or with someone else.</h3>
-
-<h3>As a player, I want to see where my moves are registered on the board so I know where I can make a move next.</h3>
-
-<h3>As a player, I want to be notified when there are no further moves I can make so that I know when the result is a tie.</h3>
-
-<h3>As a user, I want to be able to keep track of my wins and losses so I can compare my record against other users.</h3>
-
-<h3>As a user, I want to be able to sign up to play.</h3>
-
-<h3>As a user, I want to be able to sign in to play.</h3>
-
-<h3>As a user, I want to be able to start a new game when signed in.</h3>
-
-<h3>As a user, I want to be able to change my password when signed in.</h3>
-
-<h3>As a user, I want to be able to easily sign out.</h3>
-
-<h3>Bonus: As a user, I want to be able to control sound effects and music in case I'm in an environment that's not conducive to noise.</h3>
+<ul>
+<li>As a player, I want to play tic-tac-toe against myself or with someone else.</li>
+<li>As a player, I want to see where my moves are registered on the board so I know where I can make a move next.</li>
+<li>As a player, I want to be notified when there are no further moves I can make so that I know when the result is a tie.</li>
+<li>As a user, I want to be able to keep track of my wins and losses so I can compare my record against other users.</li>
+<li>As a user, I want to be able to sign up to play.</li>
+<li>As a user, I want to be able to sign in to play.</li>
+<li>As a user, I want to be able to start a new game when signed in.</li>
+<li>As a user, I want to be able to change my password when signed in.</li>
+<li>As a user, I want to be able to easily sign out.</li>
+<li>Bonus: As a user, I want to be able to control sound effects and music in case I'm in an environment that's not conducive to noise.</li>
+<ul>
 
 <h2>How to represent the board in JS:</h2>
 
@@ -93,11 +86,11 @@ mountain.</p>
 
 <p>As far as the engine goes, I planned to utilize the array listed in the game API to track which move has been entered into the board, using the 9 indices (0-8) to track the location of the move on the board. The Board itself would be represented in the array on a left to right readout, with the index of 0 indicating the upper left square on the board, 1 being the upper middle, 2 being upper right, 3 being middle left, and so on. Planned to have it look like this:</p>
 
-<p>
-0 1 2
-3 4 5
-6 7 8
-</p>
+
+<p>0 1 2</p>
+<p>3 4 5</p>
+<p>6 7 8</p>
+
 
 <h2>How I will approach the project:<h2>
 
@@ -128,6 +121,7 @@ mountain.</p>
 <li>pre-test</li>
 <li>testing</li>
 <li>post-test (ready to push / deploy)</li>
+</ul>
 
 <p>I will try to consistently commit in phases. During the pre-test phase, I will commit each time a section of code is written (i.e. the html, the api, the ajax, the ui, game engine, etc).</p>
 
