@@ -75,6 +75,11 @@ const signOutSuccess = () => {
   $('#player-icon-x').hide()
   $('#player-icon-o').hide()
   $('.giphy-embed').attr('hidden', true)
+  $('#games-played').hide()
+  $('#x-wins').hide()
+  $('#o-wins').hide()
+  $('#ties').hide()
+  $('#total-games').hide()
   $('#show-sign-in').show()
   $('#show-sign-up').show()
 }

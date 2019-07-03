@@ -47,6 +47,8 @@ const onChangePw = event => {
 const onSignOut = event => {
   event.preventDefault()
   // no form data required for DELETE events
+  $('#hide-stats').hide()
+  $('#show-game').hide()
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
